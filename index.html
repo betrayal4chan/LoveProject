@@ -1,29 +1,37 @@
-<!DOCTYPE html>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-<meta charset="utf-8" />
-<title>This one is for my Shraboni</title>
-
-<!-- Font Awesome -->
 <script src="https://kit.fontawesome.com/a14ae32021.js" crossorigin="anonymous"></script>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>This one is for my shraboni</title>
 
-<!-- Google Fonts -->
+<style type="text/css">
+@font-face {
+	font-family: digit;
+	src: url('digital-7_mono.ttf') format("truetype");
+}
+</style>
+<link href="css/default.css" type="text/css" rel="stylesheet">
+<script type="text/javascript" src="js/jquery.js"></script>
+<script type="text/javascript" src="js/garden.js"></script>
+<script type="text/javascript" src="js/functions.js"></script>
+<style type="text/css">
+@font-face {
+	font-family: digit;
+	src: url('digital-7_mono.ttf') format("truetype");
+}
+</style>
+
+<!-- NEW STYLES START HERE -->
+<!-- Google Fonts for classy headings -->
 <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&display=swap" rel="stylesheet">
 
-<!-- Main Styles -->
 <style>
-@font-face {
-    font-family: digit;
-    src: url('digital-7_mono.ttf') format("truetype");
-}
-
-/* Gradient Background */
+    /* 1. Soft Gradient Background */
 body {
-    margin: 0;
     background: linear-gradient(135deg, #ffd1dc, #fff0e6, #ffe6f2);
     background-size: 300% 300%;
     animation: gradientMove 8s ease infinite;
-    font-family: Arial, sans-serif;
 }
 @keyframes gradientMove {
     0% { background-position: 0% 50%; }
@@ -31,31 +39,25 @@ body {
     100% { background-position: 0% 50%; }
 }
 
-/* Main container on top of petals */
-#mainDiv {
-    position: relative;
-    z-index: 10000;
-    padding: 20px;
-}
+    /* 3. Gentle Heart Glow */
+    #icon {
+        color: #ff4f7d;
+        animation: heartGlow 3s ease-in-out infinite;
+    }
+    @keyframes heartGlow {
+        0%, 100% { text-shadow: 0 0 5px #ffb3c1; }
+        50% { text-shadow: 0 0 15px #ff4f7d; }
+    }
 
-/* Heart Glow */
-#icon {
-    color: #ff4f7d;
-    animation: heartGlow 3s ease-in-out infinite;
-}
-@keyframes heartGlow {
-    0%, 100% { text-shadow: 0 0 5px #ffb3c1; }
-    50% { text-shadow: 0 0 15px #ff4f7d; }
-}
-
-/* Classy headings */
-h1, #messages, .signature {
-    font-family: 'Dancing Script', cursive;
-}
-
-/* Buttons */
-#music-toggle, #theme-toggle {
+    /* 4. Classy Font for headings */
+    h1, #messages, .signature {
+        font-family: 'Dancing Script', cursive;
+    }
+	/* Music Button Styling */
+#music-toggle {
     position: fixed;
+    bottom: 20px;
+    right: 20px;
     background: rgba(255, 192, 203, 0.85);
     color: #4a2c2a;
     border: none;
@@ -66,131 +68,122 @@ h1, #messages, .signature {
     cursor: pointer;
     box-shadow: 0 2px 6px rgba(0,0,0,0.15);
     transition: background 0.3s;
-    z-index: 10001;
 }
-#music-toggle:hover, #theme-toggle:hover {
+#music-toggle:hover {
     background: rgba(255, 182, 193, 1);
 }
-#music-toggle {
-    bottom: 20px;
-    right: 20px;
-}
-#theme-toggle {
-    top: 20px;
-    right: 20px;
-}
-body.night #theme-toggle {
-    background: rgba(30, 30, 60, 0.9);
-    color: #fff;
-}
 </style>
+<!-- NEW STYLES END HERE -->
 </head>
 
 <body>
-<!-- Theme Toggle -->
-<button id="theme-toggle">🌞 Day Mode</button>
 
-<!-- Main Content -->
 <div id="mainDiv">
-    <div id="content">
-        <div id="code">
-            <span class="comments">/**</span><br />
-            <span class="comments">* THE CODE OF LOVE</span><br />
-            <span class="comments">*/</span><br />
-            HAPPY BIRTHDAY Pookie !!<br />
-            May all your dreams come true<br />
-            <span class="comments">// And I will be present throughout this journey of yours </span><br />
-            Forever with you;<br />
-            <span class="comments">// Your face, your voice, your words.</span><br />
-            Your everything got imprinted in my heart;<br />
-            As the time went on;<br />
-            The bond grew stronger and stronger;<br />
-            Journey from bittersweet infatuation to love;<br />
-            We will walk a long journey TOGETHER;<br />
-            There have been fights;<br />
-            <span class="comments">// And I'm sure there will be more.</span><br />
-            But our bond will always grow back stronger;<br />
-            <br>
-            All I want to say is:<br />
-            Baby, I will love you forever;<br />
-            <br>
-            Now if you want to see a picture of us, you can touch the heart below<br />
-            <br>
-            <span id="heartspan">
-                <a href="image.jpeg"><i class="fas fa-heart" id="icon"></i></a>
-            </span>
-        </div>
-
-        <div id="loveHeart">
-            <canvas id="garden"></canvas>
-            <div id="words">
-                <div id="messages">
-                    ওম শ্রাবণী FOREVER
-                    <div id="elapseClock"></div>
-                </div>
-                <div id="loveu">
-                    I LOVE YOU SO MUCH<br/>
-                    <div class="signature">- OM (your pookie)</div>
-                </div>
-            </div>
-        </div>
-    </div>
+	<div id="content">
+		<div id="code">
+			<span class="comments">/**</span><br />
+			<span class="space"/><span class="comments">*THE CODE OF LOVE</span><br />
+			<span class="space"/><span class="comments">*/</span><br />
+			HAPPY BIRTHDAY Pookie !!<br />
+			May all your dreams come true<br />
+			<span class="comments">// And i will be present throughout this journey of yours </span><br />
+			Forever with you;<br />
+			<span class="comments">// Your face Your Voice Your Words.</span><br />
+			Your everything got imprinted in my heart;<br />
+			As the time went on;<br />
+			The Bond grew stronger and stronger;<br />
+			Journey from bitter sweet Infatuation to Love;<br />
+			We will walk a long journey TOGETHER;<br />
+			There have been fights ;<br />
+			<span class="comments">// And I'm sure there will be more.</span><br />
+			But our Bond will always grow back Stronger;<br />
+			<br>
+			<br>
+			All I want to say is:<br />
+			Baby, I will love you forever;<br />
+			<br>
+			<br>
+			Now If you want to see a picture of us you can touch the heart below<br />
+			<br>
+			<span id="heartspan">
+			<a href="image.jpeg"><i class="fas fa-heart" id="icon"></i></a>
+			</span>
+		</div>
+		<div id="loveHeart">
+			<canvas id="garden"></canvas>
+			<div id="words">
+				<div id="messages">
+					ওম শ্রাবণী FOREVER
+					<div id="elapseClock"></div>
+				</div>
+				<div id="loveu">
+					I LOVE YOU SO MUCH<br/>
+					<div class="signature">- OM(your pookie)</div>
+				</div>
+			</div>
+		</div>
+	</div>
 </div>
 
-<!-- Background Music -->
+<script type="text/javascript">
+var offsetX = $("#loveHeart").width() / 2;
+var offsetY = $("#loveHeart").height() / 2 - 55;
+var together = new Date();
+together.setFullYear(2025, 0, 28);
+together.setHours(0);
+together.setMinutes(0);
+together.setSeconds(0);
+together.setMilliseconds(0);
+
+if (!document.createElement('canvas').getContext) {
+	var msg = document.createElement("div");
+	msg.id = "errorMsg";
+	msg.innerHTML = "Your browser doesn't support HTML5!<br/>Recommend use Chrome 14+/IE 9+/Firefox 7+/Safari 4+"; 
+	document.body.appendChild(msg);
+	$("#code").css("display", "none")
+	$("#copyright").css("position", "absolute");
+	$("#copyright").css("bottom", "10px");
+	document.execCommand("stop");
+} else {
+	setTimeout(function () {
+		startHeartAnimation();
+	}, 5000);
+
+	timeElapse(together);
+	setInterval(function () {
+		timeElapse(together);
+	}, 500);
+
+	adjustCodePosition();
+	$("#code").typewriter();
+}
+</script>
+				<!-- Background Music Player -->
 <audio id="bg-music" autoplay loop>
     <source src="bgmusic.mp3" type="audio/mpeg">
 </audio>
-<button id="music-toggle"><i class="fas fa-heart"></i> Music</button>
 
-<!-- Scripts -->
-<script src="js/jquery.js"></script>
-<script src="js/garden.js"></script>
-<script src="js/functions.js"></script>
-<script>
-let nightMode = false;
-let petalColor = "#ffb7c5";
-let heartColor = "#ff4f7d";
-function getPetalColor(){return petalColor;}
-function getHeartColor(){return heartColor;}
-
-const body = document.body;
-const themeToggleBtn = document.getElementById('theme-toggle');
-
-function setDayTheme() {
-    body.classList.remove("night");
-    body.style.background = "linear-gradient(135deg, #ffd1dc, #fff0e6, #ffe6f2)";
-    petalColor = "#ffb7c5"; 
-    heartColor = "#ff4f7d"; 
-    themeToggleBtn.innerHTML = "🌞 Day Mode";
-}
-function setNightTheme() {
-    body.classList.add("night");
-    body.style.background = "linear-gradient(135deg, #0b0f2e, #1a1f4a, #05010f)";
-    petalColor = "#d6e6ff"; 
-    heartColor = "#6ea0ff"; 
-    themeToggleBtn.innerHTML = "🌙 Night Mode";
-    spawnShootingStar();
-}
-themeToggleBtn.addEventListener("click", () => {
-    nightMode ? setDayTheme() : setNightTheme();
-    nightMode = !nightMode;
-});
-
-// Music Toggle
+<!-- Music Toggle Button -->
+<button id="music-toggle">
+    <i class="fas fa-heart"></i> Music
+</button>
+				<script>
+// Music toggle logic
 const music = document.getElementById('bg-music');
-const musicToggleBtn = document.getElementById('music-toggle');
-musicToggleBtn.addEventListener('click', () => {
+const toggleBtn = document.getElementById('music-toggle');
+
+toggleBtn.addEventListener('click', () => {
     if (music.paused) {
         music.play();
-        musicToggleBtn.innerHTML = '<i class="fas fa-heart"></i> Music';
+        toggleBtn.innerHTML = '<i class="fas fa-heart"></i> Music';
     } else {
         music.pause();
-        musicToggleBtn.innerHTML = '<i class="fas fa-heart-broken"></i> Music Off';
+        toggleBtn.innerHTML = '<i class="fas fa-heart-broken"></i> Music Off';
     }
 });
-
-// Petals
+				</script>
+				
+<script>
 window.addEventListener("load", function() {
     class Petal {
         constructor(width, height) { this.reset(width, height); }
@@ -216,7 +209,7 @@ window.addEventListener("load", function() {
             ctx.globalAlpha = this.opacity;
             ctx.translate(this.x, this.y);
             ctx.rotate(this.angle);
-            ctx.fillStyle = getPetalColor();
+            ctx.fillStyle = "#ffb7c5";
             ctx.beginPath();
             ctx.moveTo(0, 0);
             ctx.quadraticCurveTo(this.size / 2, -this.size / 2, 0, -this.size);
@@ -225,55 +218,59 @@ window.addEventListener("load", function() {
             ctx.restore();
         }
     }
+
     const canvas = document.createElement("canvas");
+    canvas.id = "petalsCanvas";
     const ctx = canvas.getContext("2d");
     let petals = [];
     let width = window.innerWidth;
     let height = window.innerHeight;
+    let maxPetals = 6;
+    let currentPetals = 2;
+
     canvas.width = width;
     canvas.height = height;
-    Object.assign(canvas.style, {position: "fixed",top: "0",left: "0",pointerEvents: "none",zIndex: "9999"});
+    Object.assign(canvas.style, {
+        position: "fixed",
+        top: "0",
+        left: "0",
+        pointerEvents: "none",
+        zIndex: "9999"
+    });
     document.body.appendChild(canvas);
-    for (let i = 0; i < 6; i++) petals.push(new Petal(width, height));
+
+    for (let i = 0; i < currentPetals; i++) petals.push(new Petal(width, height));
+
+    let rampUp = setInterval(() => {
+        if (currentPetals < maxPetals) {
+            petals.push(new Petal(width, height));
+            currentPetals++;
+        } else {
+            clearInterval(rampUp);
+        }
+    }, 1000);
+
     function animate() {
         ctx.clearRect(0, 0, width, height);
-        for (let petal of petals) { petal.update(width, height); petal.draw(ctx); }
+        for (let petal of petals) {
+            petal.update(width, height);
+            petal.draw(ctx);
+        }
         requestAnimationFrame(animate);
     }
+
     animate();
+
     window.addEventListener("resize", () => {
-        width = window.innerWidth; height = window.innerHeight;
-        canvas.width = width; canvas.height = height;
+        width = window.innerWidth;
+        height = window.innerHeight;
+        canvas.width = width;
+        canvas.height = height;
     });
 });
-
-// Shooting Star
-function spawnShootingStar() {
-    if (!nightMode) return;
-    const star = document.createElement("div");
-    star.style.position = "fixed";
-    star.style.width = "2px";
-    star.style.height = "100px";
-    star.style.background = "linear-gradient(white, transparent)";
-    star.style.top = Math.random() * window.innerHeight * 0.5 + "px";
-    star.style.left = Math.random() * window.innerWidth + "px";
-    star.style.transform = "rotate(45deg)";
-    star.style.zIndex = "9998";
-    star.style.opacity = "0.8";
-    document.body.appendChild(star);
-    setTimeout(() => star.remove(), 1000);
-    setTimeout(spawnShootingStar, 15000);
-}
-
-// Heart Animation Init
-window.onload = function() {
-    const together = new Date(2025, 0, 28);
-    setTimeout(startHeartAnimation, 5000);
-    timeElapse(together);
-    setInterval(() => timeElapse(together), 500);
-    adjustCodePosition();
-    $("#code").typewriter();
-};
 </script>
 </body>
 </html>
+</body>
+</html> 
+Still no petals 
