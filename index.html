@@ -184,19 +184,20 @@ toggleBtn.addEventListener('click', () => {
 				</script>
 				
 <script>
-window.addEventListener("load", function() {
+window.addEventListener("load", function () {
     class Petal {
         constructor(width, height) { this.reset(width, height); }
         reset(width, height) {
             this.x = Math.random() * width;
             this.y = Math.random() * -height;
-            this.size = 10 + Math.random() * 10;
+            this.size = 12 + Math.random() * 14; // bigger petals
             this.speedY = 0.5 + Math.random() * 1;
             this.speedX = Math.random() * 0.5 - 0.25;
-            this.opacity = 0.7 + Math.random() * 0.3;
+            this.opacity = 0.85 + Math.random() * 0.15; // brighter
             this.swing = Math.random() * 2;
             this.angle = Math.random() * Math.PI * 2;
             this.spin = (Math.random() - 0.5) * 0.02;
+            this.fillColor = "#ff9eb5"; // soft pink
         }
         update(width, height) {
             this.y += this.speedY;
@@ -209,7 +210,7 @@ window.addEventListener("load", function() {
             ctx.globalAlpha = this.opacity;
             ctx.translate(this.x, this.y);
             ctx.rotate(this.angle);
-            ctx.fillStyle = "#ffb7c5";
+            ctx.fillStyle = this.fillColor;
             ctx.beginPath();
             ctx.moveTo(0, 0);
             ctx.quadraticCurveTo(this.size / 2, -this.size / 2, 0, -this.size);
@@ -235,12 +236,13 @@ window.addEventListener("load", function() {
         top: "0",
         left: "0",
         pointerEvents: "none",
-        zIndex: "9999"
+        zIndex: "2147483647" // Max possible
     });
     document.body.appendChild(canvas);
 
     for (let i = 0; i < currentPetals; i++) petals.push(new Petal(width, height));
 
+    // Gradual ramp-up
     let rampUp = setInterval(() => {
         if (currentPetals < maxPetals) {
             petals.push(new Petal(width, height));
@@ -269,5 +271,7 @@ window.addEventListener("load", function() {
     });
 });
 </script>
+</body>
+</html>
 </body>
 </html>
