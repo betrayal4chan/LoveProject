@@ -2,7 +2,7 @@
 	        this.x = x;
 	        this.y = y;
 	    };
-
+		
 	    Vector.prototype = {
 	        rotate: function (theta) {
 	            var x = this.x;
@@ -33,7 +33,7 @@
 	            return this;
 	        }
 	    };
-
+		
 	    function Petal(stretchA, stretchB, startAngle, angle, growFactor, bloom) {
 	        this.stretchA = stretchA;
 	        this.stretchB = stretchB;
