@@ -167,5 +167,22 @@ if (!document.createElement('canvas').getContext) {
 <button id="music-toggle">
     <i class="fas fa-heart"></i> Music
 </button>
+				<script>
+// Music toggle logic
+const music = document.getElementById('bg-music');
+const toggleBtn = document.getElementById('music-toggle');
+
+toggleBtn.addEventListener('click', () => {
+    if (music.paused) {
+        music.play();
+        toggleBtn.innerHTML = '<i class="fas fa-heart"></i> Music';
+    } else {
+        music.pause();
+        toggleBtn.innerHTML = '<i class="fas fa-heart-broken"></i> Music Off';
+    }
+});
+</script>
+</body>
+</html>
 </body>
 </html>
