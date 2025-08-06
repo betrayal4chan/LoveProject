@@ -53,6 +53,25 @@ body {
     h1, #messages, .signature {
         font-family: 'Dancing Script', cursive;
     }
+	/* Music Button Styling */
+#music-toggle {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background: rgba(255, 192, 203, 0.85);
+    color: #4a2c2a;
+    border: none;
+    padding: 10px 16px;
+    border-radius: 20px;
+    font-family: 'Dancing Script', cursive;
+    font-size: 16px;
+    cursor: pointer;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+    transition: background 0.3s;
+}
+#music-toggle:hover {
+    background: rgba(255, 182, 193, 1);
+}
 </style>
 <!-- NEW STYLES END HERE -->
 </head>
@@ -139,5 +158,14 @@ if (!document.createElement('canvas').getContext) {
 	$("#code").typewriter();
 }
 </script>
+				<!-- Background Music Player -->
+<audio id="bg-music" autoplay loop>
+    <source src="bgmusic.mp3" type="audio/mpeg">
+</audio>
+
+<!-- Music Toggle Button -->
+<button id="music-toggle">
+    <i class="fas fa-heart"></i> Music
+</button>
 </body>
 </html>
