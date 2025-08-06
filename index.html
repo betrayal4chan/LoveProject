@@ -1,37 +1,29 @@
-﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
+<meta charset="utf-8" />
+<title>This one is for my Shraboni</title>
+
+<!-- Font Awesome -->
 <script src="https://kit.fontawesome.com/a14ae32021.js" crossorigin="anonymous"></script>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>This one is for my shraboni</title>
 
-<style type="text/css">
-@font-face {
-	font-family: digit;
-	src: url('digital-7_mono.ttf') format("truetype");
-}
-</style>
-<link href="css/default.css" type="text/css" rel="stylesheet">
-<script type="text/javascript" src="js/jquery.js"></script>
-<script type="text/javascript" src="js/garden.js"></script>
-<script type="text/javascript" src="js/functions.js"></script>
-<style type="text/css">
-@font-face {
-	font-family: digit;
-	src: url('digital-7_mono.ttf') format("truetype");
-}
-</style>
-
-<!-- NEW STYLES START HERE -->
-<!-- Google Fonts for classy headings -->
+<!-- Google Fonts -->
 <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&display=swap" rel="stylesheet">
 
+<!-- Main Styles -->
 <style>
-    /* 1. Soft Gradient Background */
+@font-face {
+    font-family: digit;
+    src: url('digital-7_mono.ttf') format("truetype");
+}
+
+/* Gradient Background */
 body {
+    margin: 0;
     background: linear-gradient(135deg, #ffd1dc, #fff0e6, #ffe6f2);
     background-size: 300% 300%;
     animation: gradientMove 8s ease infinite;
+    font-family: Arial, sans-serif;
 }
 @keyframes gradientMove {
     0% { background-position: 0% 50%; }
@@ -39,25 +31,31 @@ body {
     100% { background-position: 0% 50%; }
 }
 
-    /* 3. Gentle Heart Glow */
-    #icon {
-        color: #ff4f7d;
-        animation: heartGlow 3s ease-in-out infinite;
-    }
-    @keyframes heartGlow {
-        0%, 100% { text-shadow: 0 0 5px #ffb3c1; }
-        50% { text-shadow: 0 0 15px #ff4f7d; }
-    }
+/* Main container on top of petals */
+#mainDiv {
+    position: relative;
+    z-index: 10000;
+    padding: 20px;
+}
 
-    /* 4. Classy Font for headings */
-    h1, #messages, .signature {
-        font-family: 'Dancing Script', cursive;
-    }
-	/* Music Button Styling */
-#music-toggle {
+/* Heart Glow */
+#icon {
+    color: #ff4f7d;
+    animation: heartGlow 3s ease-in-out infinite;
+}
+@keyframes heartGlow {
+    0%, 100% { text-shadow: 0 0 5px #ffb3c1; }
+    50% { text-shadow: 0 0 15px #ff4f7d; }
+}
+
+/* Classy headings */
+h1, #messages, .signature {
+    font-family: 'Dancing Script', cursive;
+}
+
+/* Buttons */
+#music-toggle, #theme-toggle {
     position: fixed;
-    bottom: 20px;
-    right: 20px;
     background: rgba(255, 192, 203, 0.85);
     color: #4a2c2a;
     border: none;
@@ -68,46 +66,56 @@ body {
     cursor: pointer;
     box-shadow: 0 2px 6px rgba(0,0,0,0.15);
     transition: background 0.3s;
+    z-index: 10001;
 }
-#music-toggle:hover {
+#music-toggle:hover, #theme-toggle:hover {
     background: rgba(255, 182, 193, 1);
 }
-	#theme-toggle {
-    position: fixed;
+#music-toggle {
+    bottom: 20px;
+    right: 20px;
+}
+#theme-toggle {
     top: 20px;
     right: 20px;
-    background: rgba(255, 192, 203, 0.9);
-    color: #4a2c2a;
-    border: none;
-    padding: 10px 16px;
-    border-radius: 20px;
-    font-family: 'Dancing Script', cursive;
-    font-size: 16px;
-    cursor: pointer;
-    box-shadow: 0 2px 6px rgba(0,0,0,0.15);
-    transition: background 0.5s, color 0.5s;
-    z-index: 10000;
 }
 body.night #theme-toggle {
     background: rgba(30, 30, 60, 0.9);
     color: #fff;
 }
 </style>
-<!-- NEW STYLES END HERE -->
 </head>
 
 <body>
-<!-- Theme Toggle Button -->
-<button id="theme-toggle">
-    🌞 Day Mode
-</button>
+<!-- Theme Toggle -->
+<button id="theme-toggle">🌞 Day Mode</button>
 
+<!-- Main Content -->
 <div id="mainDiv">
     <div id="content">
         <div id="code">
+            <span class="comments">/**</span><br />
+            <span class="comments">* THE CODE OF LOVE</span><br />
+            <span class="comments">*/</span><br />
             HAPPY BIRTHDAY Pookie !!<br />
             May all your dreams come true<br />
-            ...
+            <span class="comments">// And I will be present throughout this journey of yours </span><br />
+            Forever with you;<br />
+            <span class="comments">// Your face, your voice, your words.</span><br />
+            Your everything got imprinted in my heart;<br />
+            As the time went on;<br />
+            The bond grew stronger and stronger;<br />
+            Journey from bittersweet infatuation to love;<br />
+            We will walk a long journey TOGETHER;<br />
+            There have been fights;<br />
+            <span class="comments">// And I'm sure there will be more.</span><br />
+            But our bond will always grow back stronger;<br />
+            <br>
+            All I want to say is:<br />
+            Baby, I will love you forever;<br />
+            <br>
+            Now if you want to see a picture of us, you can touch the heart below<br />
+            <br>
             <span id="heartspan">
                 <a href="image.jpeg"><i class="fas fa-heart" id="icon"></i></a>
             </span>
@@ -122,7 +130,7 @@ body.night #theme-toggle {
                 </div>
                 <div id="loveu">
                     I LOVE YOU SO MUCH<br/>
-                    <div class="signature">- OM(your pookie)</div>
+                    <div class="signature">- OM (your pookie)</div>
                 </div>
             </div>
         </div>
@@ -133,33 +141,22 @@ body.night #theme-toggle {
 <audio id="bg-music" autoplay loop>
     <source src="bgmusic.mp3" type="audio/mpeg">
 </audio>
+<button id="music-toggle"><i class="fas fa-heart"></i> Music</button>
 
-<!-- Music Toggle Button -->
-<button id="music-toggle">
-    <i class="fas fa-heart"></i> Music
-</button>
-
+<!-- Scripts -->
 <script src="js/jquery.js"></script>
 <script src="js/garden.js"></script>
 <script src="js/functions.js"></script>
-
 <script>
-/* -------------------------------
-   GLOBAL THEME VARIABLES
---------------------------------- */
 let nightMode = false;
-let petalColor = "#ffb7c5"; // Day pink
-let heartColor = "#ff4f7d"; // Day heart
+let petalColor = "#ffb7c5";
+let heartColor = "#ff4f7d";
+function getPetalColor(){return petalColor;}
+function getHeartColor(){return heartColor;}
+
 const body = document.body;
 const themeToggleBtn = document.getElementById('theme-toggle');
 
-// Make colors accessible to other scripts
-function getPetalColor() { return petalColor; }
-function getHeartColor() { return heartColor; }
-
-/* -------------------------------
-   THEME FUNCTIONS
---------------------------------- */
 function setDayTheme() {
     body.classList.remove("night");
     body.style.background = "linear-gradient(135deg, #ffd1dc, #fff0e6, #ffe6f2)";
@@ -167,7 +164,6 @@ function setDayTheme() {
     heartColor = "#ff4f7d"; 
     themeToggleBtn.innerHTML = "🌞 Day Mode";
 }
-
 function setNightTheme() {
     body.classList.add("night");
     body.style.background = "linear-gradient(135deg, #0b0f2e, #1a1f4a, #05010f)";
@@ -176,22 +172,14 @@ function setNightTheme() {
     themeToggleBtn.innerHTML = "🌙 Night Mode";
     spawnShootingStar();
 }
-
 themeToggleBtn.addEventListener("click", () => {
-    if (nightMode) {
-        setDayTheme();
-    } else {
-        setNightTheme();
-    }
+    nightMode ? setDayTheme() : setNightTheme();
     nightMode = !nightMode;
 });
 
-/* -------------------------------
-   MUSIC TOGGLE
---------------------------------- */
+// Music Toggle
 const music = document.getElementById('bg-music');
 const musicToggleBtn = document.getElementById('music-toggle');
-
 musicToggleBtn.addEventListener('click', () => {
     if (music.paused) {
         music.play();
@@ -202,9 +190,7 @@ musicToggleBtn.addEventListener('click', () => {
     }
 });
 
-/* -------------------------------
-   PETALS
---------------------------------- */
+// Petals
 window.addEventListener("load", function() {
     class Petal {
         constructor(width, height) { this.reset(width, height); }
@@ -239,47 +225,29 @@ window.addEventListener("load", function() {
             ctx.restore();
         }
     }
-
     const canvas = document.createElement("canvas");
     const ctx = canvas.getContext("2d");
     let petals = [];
     let width = window.innerWidth;
     let height = window.innerHeight;
-
     canvas.width = width;
     canvas.height = height;
-    Object.assign(canvas.style, {
-        position: "fixed",
-        top: "0",
-        left: "0",
-        pointerEvents: "none",
-        zIndex: "9999"
-    });
+    Object.assign(canvas.style, {position: "fixed",top: "0",left: "0",pointerEvents: "none",zIndex: "9999"});
     document.body.appendChild(canvas);
-
     for (let i = 0; i < 6; i++) petals.push(new Petal(width, height));
-
     function animate() {
         ctx.clearRect(0, 0, width, height);
-        for (let petal of petals) {
-            petal.update(width, height);
-            petal.draw(ctx);
-        }
+        for (let petal of petals) { petal.update(width, height); petal.draw(ctx); }
         requestAnimationFrame(animate);
     }
     animate();
-
     window.addEventListener("resize", () => {
-        width = window.innerWidth;
-        height = window.innerHeight;
-        canvas.width = width;
-        canvas.height = height;
+        width = window.innerWidth; height = window.innerHeight;
+        canvas.width = width; canvas.height = height;
     });
 });
 
-/* -------------------------------
-   SHOOTING STARS
---------------------------------- */
+// Shooting Star
 function spawnShootingStar() {
     if (!nightMode) return;
     const star = document.createElement("div");
@@ -296,6 +264,16 @@ function spawnShootingStar() {
     setTimeout(() => star.remove(), 1000);
     setTimeout(spawnShootingStar, 15000);
 }
+
+// Heart Animation Init
+window.onload = function() {
+    const together = new Date(2025, 0, 28);
+    setTimeout(startHeartAnimation, 5000);
+    timeElapse(together);
+    setInterval(() => timeElapse(together), 500);
+    adjustCodePosition();
+    $("#code").typewriter();
+};
 </script>
 </body>
 </html>
