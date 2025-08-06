@@ -72,12 +72,35 @@ body {
 #music-toggle:hover {
     background: rgba(255, 182, 193, 1);
 }
+	#theme-toggle {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    background: rgba(255, 192, 203, 0.9);
+    color: #4a2c2a;
+    border: none;
+    padding: 10px 16px;
+    border-radius: 20px;
+    font-family: 'Dancing Script', cursive;
+    font-size: 16px;
+    cursor: pointer;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+    transition: background 0.5s, color 0.5s;
+    z-index: 10000;
+}
+body.night #theme-toggle {
+    background: rgba(30, 30, 60, 0.9);
+    color: #fff;
+}
 </style>
 <!-- NEW STYLES END HERE -->
 </head>
 
 <body>
-
+<!-- Theme Toggle Button -->
+<button id="theme-toggle">
+    🌞 Day Mode
+</button>
 <div id="mainDiv">
 	<div id="content">
 		<div id="code">
@@ -226,7 +249,7 @@ window.addEventListener("load", function() {
             ctx.globalAlpha = this.opacity;
             ctx.translate(this.x, this.y);
             ctx.rotate(this.angle);
-            ctx.fillStyle = "#ffb7c5";
+            ctx.fillStyle = getPetalColor();
             ctx.beginPath();
             ctx.moveTo(0, 0);
             ctx.quadraticCurveTo(this.size / 2, -this.size / 2, 0, -this.size);
@@ -285,6 +308,71 @@ window.addEventListener("load", function() {
         canvas.height = height;
     });
 });
+</script>
+				<script>
+let nightMode = false;
+
+// Variables to share with petals and heart
+let petalColor = "#ffb7c5"; // Day pink
+let heartColor = "#ff4f7d"; // Day pink
+
+const body = document.body;
+const toggleBtn = document.getElementById('theme-toggle');
+
+// Day theme
+function setDayTheme() {
+    body.classList.remove("night");
+    document.body.style.background = "linear-gradient(135deg, #ffd1dc, #fff0e6, #ffe6f2)";
+    petalColor = "#ffb7c5"; 
+    heartColor = "#ff4f7d"; 
+    toggleBtn.innerHTML = "🌞 Day Mode";
+}
+
+// Night theme
+function setNightTheme() {
+    body.classList.add("night");
+    document.body.style.background = "linear-gradient(135deg, #0b0f2e, #1a1f4a, #05010f)";
+    petalColor = "#d6e6ff"; 
+    heartColor = "#6ea0ff"; 
+    toggleBtn.innerHTML = "🌙 Night Mode";
+    spawnShootingStar();
+}
+
+// Toggle
+toggleBtn.addEventListener("click", () => {
+    if (nightMode) {
+        setDayTheme();
+    } else {
+        setNightTheme();
+    }
+    nightMode = !nightMode;
+});
+
+// Functions for other scripts to read
+function getPetalColor() {
+    return petalColor;
+}
+function getHeartColor() {
+    return heartColor;
+}
+
+// Shooting star effect
+function spawnShootingStar() {
+    if (!nightMode) return;
+    const star = document.createElement("div");
+    star.style.position = "fixed";
+    star.style.width = "2px";
+    star.style.height = "100px";
+    star.style.background = "linear-gradient(white, transparent)";
+    star.style.top = Math.random() * window.innerHeight * 0.5 + "px";
+    star.style.left = Math.random() * window.innerWidth + "px";
+    star.style.transform = "rotate(45deg)";
+    star.style.zIndex = "9998";
+    star.style.opacity = "0.8";
+    document.body.appendChild(star);
+    setTimeout(() => star.remove(), 1000);
+    setTimeout(spawnShootingStar, 15000);
+}
 </script>
 </body>
 </html>
