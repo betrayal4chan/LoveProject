@@ -186,14 +186,11 @@
 	    Garden.rgba = function (r, g, b, a) {
 	        return 'rgba(' + r + ',' + g + ',' + b + ',' + a + ')';
 	    };
-	    Garden.randomrgba = function (rmin, rmax, gmin, gmax, bmin, bmax, a) {
-			var r = Math.round(Garden.random(rmin, rmax));
-			var g = Math.round(Garden.random(gmin, gmax));
-			var b = Math.round(Garden.random(bmin, bmax));
-			var limit = 5;
-			if (Math.abs(r - g) <= limit && Math.abs(g - b) <= limit && Math.abs(b - r) <= limit) {
-				return Garden.rgba(rmin, rmax, gmin, gmax, bmin, bmax, a);
-			} else {
-				return Garden.rgba(r, g, b, a);
-			}
-	    };
+	Garden.randomrgba = function () {
+    const c = getHeartColor(); // "#ff4f7d" etc.
+    const r = parseInt(c.slice(1, 3), 16);
+    const g = parseInt(c.slice(3, 5), 16);
+    const b = parseInt(c.slice(5, 7), 16);
+    const a = Garden.options.color.opacity;
+    return Garden.rgba(r, g, b, a);
+};
