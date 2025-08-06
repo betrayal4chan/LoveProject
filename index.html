@@ -101,87 +101,35 @@ body.night #theme-toggle {
 <button id="theme-toggle">
     🌞 Day Mode
 </button>
+
 <div id="mainDiv">
-	<div id="content">
-		<div id="code">
-			<span class="comments">/**</span><br />
-			<span class="space"/><span class="comments">*THE CODE OF LOVE</span><br />
-			<span class="space"/><span class="comments">*/</span><br />
-			HAPPY BIRTHDAY Pookie !!<br />
-			May all your dreams come true<br />
-			<span class="comments">// And i will be present throughout this journey of yours </span><br />
-			Forever with you;<br />
-			<span class="comments">// Your face Your Voice Your Words.</span><br />
-			Your everything got imprinted in my heart;<br />
-			As the time went on;<br />
-			The Bond grew stronger and stronger;<br />
-			Journey from bitter sweet Infatuation to Love;<br />
-			We will walk a long journey TOGETHER;<br />
-			There have been fights ;<br />
-			<span class="comments">// And I'm sure there will be more.</span><br />
-			But our Bond will always grow back Stronger;<br />
-			<br>
-			<br>
-			All I want to say is:<br />
-			Baby, I will love you forever;<br />
-			<br>
-			<br>
-			Now If you want to see a picture of us you can touch the heart below<br />
-			<br>
-			<span id="heartspan">
-			<a href="image.jpeg"><i class="fas fa-heart" id="icon"></i></a>
-			</span>
-		</div>
-		<div id="loveHeart">
-			<canvas id="garden"></canvas>
-			<div id="words">
-				<div id="messages">
-					ওম শ্রাবণী FOREVER
-					<div id="elapseClock"></div>
-				</div>
-				<div id="loveu">
-					I LOVE YOU SO MUCH<br/>
-					<div class="signature">- OM(your pookie)</div>
-				</div>
-			</div>
-		</div>
-	</div>
+    <div id="content">
+        <div id="code">
+            HAPPY BIRTHDAY Pookie !!<br />
+            May all your dreams come true<br />
+            ...
+            <span id="heartspan">
+                <a href="image.jpeg"><i class="fas fa-heart" id="icon"></i></a>
+            </span>
+        </div>
+
+        <div id="loveHeart">
+            <canvas id="garden"></canvas>
+            <div id="words">
+                <div id="messages">
+                    ওম শ্রাবণী FOREVER
+                    <div id="elapseClock"></div>
+                </div>
+                <div id="loveu">
+                    I LOVE YOU SO MUCH<br/>
+                    <div class="signature">- OM(your pookie)</div>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
 
-<script type="text/javascript">
-var offsetX = $("#loveHeart").width() / 2;
-var offsetY = $("#loveHeart").height() / 2 - 55;
-var together = new Date();
-together.setFullYear(2025, 0, 28);
-together.setHours(0);
-together.setMinutes(0);
-together.setSeconds(0);
-together.setMilliseconds(0);
-
-if (!document.createElement('canvas').getContext) {
-	var msg = document.createElement("div");
-	msg.id = "errorMsg";
-	msg.innerHTML = "Your browser doesn't support HTML5!<br/>Recommend use Chrome 14+/IE 9+/Firefox 7+/Safari 4+"; 
-	document.body.appendChild(msg);
-	$("#code").css("display", "none")
-	$("#copyright").css("position", "absolute");
-	$("#copyright").css("bottom", "10px");
-	document.execCommand("stop");
-} else {
-	setTimeout(function () {
-		startHeartAnimation();
-	}, 5000);
-
-	timeElapse(together);
-	setInterval(function () {
-		timeElapse(together);
-	}, 500);
-
-	adjustCodePosition();
-	$("#code").typewriter();
-}
-</script>
-				<!-- Background Music Player -->
+<!-- Background Music -->
 <audio id="bg-music" autoplay loop>
     <source src="bgmusic.mp3" type="audio/mpeg">
 </audio>
@@ -190,40 +138,73 @@ if (!document.createElement('canvas').getContext) {
 <button id="music-toggle">
     <i class="fas fa-heart"></i> Music
 </button>
-				<script>
-// Music toggle logic
-const music = document.getElementById('bg-music');
-const toggleBtn = document.getElementById('music-toggle');
 
-toggleBtn.addEventListener('click', () => {
+<script src="js/jquery.js"></script>
+<script src="js/garden.js"></script>
+<script src="js/functions.js"></script>
+
+<script>
+/* -------------------------------
+   GLOBAL THEME VARIABLES
+--------------------------------- */
+let nightMode = false;
+let petalColor = "#ffb7c5"; // Day pink
+let heartColor = "#ff4f7d"; // Day heart
+const body = document.body;
+const themeToggleBtn = document.getElementById('theme-toggle');
+
+// Make colors accessible to other scripts
+function getPetalColor() { return petalColor; }
+function getHeartColor() { return heartColor; }
+
+/* -------------------------------
+   THEME FUNCTIONS
+--------------------------------- */
+function setDayTheme() {
+    body.classList.remove("night");
+    body.style.background = "linear-gradient(135deg, #ffd1dc, #fff0e6, #ffe6f2)";
+    petalColor = "#ffb7c5"; 
+    heartColor = "#ff4f7d"; 
+    themeToggleBtn.innerHTML = "🌞 Day Mode";
+}
+
+function setNightTheme() {
+    body.classList.add("night");
+    body.style.background = "linear-gradient(135deg, #0b0f2e, #1a1f4a, #05010f)";
+    petalColor = "#d6e6ff"; 
+    heartColor = "#6ea0ff"; 
+    themeToggleBtn.innerHTML = "🌙 Night Mode";
+    spawnShootingStar();
+}
+
+themeToggleBtn.addEventListener("click", () => {
+    if (nightMode) {
+        setDayTheme();
+    } else {
+        setNightTheme();
+    }
+    nightMode = !nightMode;
+});
+
+/* -------------------------------
+   MUSIC TOGGLE
+--------------------------------- */
+const music = document.getElementById('bg-music');
+const musicToggleBtn = document.getElementById('music-toggle');
+
+musicToggleBtn.addEventListener('click', () => {
     if (music.paused) {
         music.play();
-        toggleBtn.innerHTML = '<i class="fas fa-heart"></i> Music';
+        musicToggleBtn.innerHTML = '<i class="fas fa-heart"></i> Music';
     } else {
         music.pause();
-        toggleBtn.innerHTML = '<i class="fas fa-heart-broken"></i> Music Off';
+        musicToggleBtn.innerHTML = '<i class="fas fa-heart-broken"></i> Music Off';
     }
 });
-				</script>
-				<!-- Music Toggle Button Script -->
-<script>
-// Music toggle logic
-const music = document.getElementById('bg-music');
-const toggleBtn = document.getElementById('music-toggle');
 
-toggleBtn.addEventListener('click', () => {
-    if (music.paused) {
-        music.play();
-        toggleBtn.innerHTML = '<i class="fas fa-heart"></i> Music';
-    } else {
-        music.pause();
-        toggleBtn.innerHTML = '<i class="fas fa-heart-broken"></i> Music Off';
-    }
-});
-</script>
-
-<!-- Petals Script -->
-<script>
+/* -------------------------------
+   PETALS
+--------------------------------- */
 window.addEventListener("load", function() {
     class Petal {
         constructor(width, height) { this.reset(width, height); }
@@ -260,13 +241,10 @@ window.addEventListener("load", function() {
     }
 
     const canvas = document.createElement("canvas");
-    canvas.id = "petalsCanvas";
     const ctx = canvas.getContext("2d");
     let petals = [];
     let width = window.innerWidth;
     let height = window.innerHeight;
-    let maxPetals = 6;
-    let currentPetals = 2;
 
     canvas.width = width;
     canvas.height = height;
@@ -279,16 +257,7 @@ window.addEventListener("load", function() {
     });
     document.body.appendChild(canvas);
 
-    for (let i = 0; i < currentPetals; i++) petals.push(new Petal(width, height));
-
-    let rampUp = setInterval(() => {
-        if (currentPetals < maxPetals) {
-            petals.push(new Petal(width, height));
-            currentPetals++;
-        } else {
-            clearInterval(rampUp);
-        }
-    }, 1000);
+    for (let i = 0; i < 6; i++) petals.push(new Petal(width, height));
 
     function animate() {
         ctx.clearRect(0, 0, width, height);
@@ -298,7 +267,6 @@ window.addEventListener("load", function() {
         }
         requestAnimationFrame(animate);
     }
-
     animate();
 
     window.addEventListener("resize", () => {
@@ -308,55 +276,10 @@ window.addEventListener("load", function() {
         canvas.height = height;
     });
 });
-</script>
-				<script>
-let nightMode = false;
 
-// Variables to share with petals and heart
-let petalColor = "#ffb7c5"; // Day pink
-let heartColor = "#ff4f7d"; // Day pink
-
-const body = document.body;
-const toggleBtn = document.getElementById('theme-toggle');
-
-// Day theme
-function setDayTheme() {
-    body.classList.remove("night");
-    document.body.style.background = "linear-gradient(135deg, #ffd1dc, #fff0e6, #ffe6f2)";
-    petalColor = "#ffb7c5"; 
-    heartColor = "#ff4f7d"; 
-    toggleBtn.innerHTML = "🌞 Day Mode";
-}
-
-// Night theme
-function setNightTheme() {
-    body.classList.add("night");
-    document.body.style.background = "linear-gradient(135deg, #0b0f2e, #1a1f4a, #05010f)";
-    petalColor = "#d6e6ff"; 
-    heartColor = "#6ea0ff"; 
-    toggleBtn.innerHTML = "🌙 Night Mode";
-    spawnShootingStar();
-}
-
-// Toggle
-toggleBtn.addEventListener("click", () => {
-    if (nightMode) {
-        setDayTheme();
-    } else {
-        setNightTheme();
-    }
-    nightMode = !nightMode;
-});
-
-// Functions for other scripts to read
-function getPetalColor() {
-    return petalColor;
-}
-function getHeartColor() {
-    return heartColor;
-}
-
-// Shooting star effect
+/* -------------------------------
+   SHOOTING STARS
+--------------------------------- */
 function spawnShootingStar() {
     if (!nightMode) return;
     const star = document.createElement("div");
@@ -374,7 +297,5 @@ function spawnShootingStar() {
     setTimeout(spawnShootingStar, 15000);
 }
 </script>
-</body>
-</html>
 </body>
 </html>
