@@ -15,7 +15,46 @@
 <script type="text/javascript" src="js/jquery.js"></script>
 <script type="text/javascript" src="js/garden.js"></script>
 <script type="text/javascript" src="js/functions.js"></script>
+<style type="text/css">
+@font-face {
+	font-family: digit;
+	src: url('digital-7_mono.ttf') format("truetype");
+}
+</style>
 
+<!-- NEW STYLES START HERE -->
+<!-- Google Fonts for classy headings -->
+<link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&display=swap" rel="stylesheet">
+
+<style>
+    /* 1. Soft Gradient Background */
+    body {
+        background: linear-gradient(135deg, #ffe6eb, #fff8f0);
+        background-size: 400% 400%;
+        animation: gradientMove 12s ease infinite;
+    }
+    @keyframes gradientMove {
+        0% { background-position: 0% 50%; }
+        50% { background-position: 100% 50%; }
+        100% { background-position: 0% 50%; }
+    }
+
+    /* 3. Gentle Heart Glow */
+    #icon {
+        color: #ff4f7d;
+        animation: heartGlow 3s ease-in-out infinite;
+    }
+    @keyframes heartGlow {
+        0%, 100% { text-shadow: 0 0 5px #ffb3c1; }
+        50% { text-shadow: 0 0 15px #ff4f7d; }
+    }
+
+    /* 4. Classy Font for headings */
+    h1, #messages, .signature {
+        font-family: 'Dancing Script', cursive;
+    }
+</style>
+<!-- NEW STYLES END HERE -->
 </head>
 
 <body>
